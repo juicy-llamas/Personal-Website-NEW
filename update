@@ -7,6 +7,8 @@ ssh ec2-user@llamas.us.to -i ~/.ssh/danny.pem '
 cd /home/ec2-user/Git/Personal-Website-NEW; 
 git pull -ff;
 cp -fr Production/finished/* /home/ec2-user/Live/;
+rm /home/ec2-user/Live/Assets;
+ln -s Production/Assets /home/ec2-user/Live/Assets;
 echo "=============================";
 echo "     IN LIVE RIGHT NOW:";
 echo "=============================";
