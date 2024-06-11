@@ -11,4 +11,5 @@ echo "=============================";
 echo "     IN LIVE RIGHT NOW:";
 echo "=============================";
 ls -lARh /home/ec2-user/Live/;
+sudo systemctl restart node.service;
 '
