@@ -9,7 +9,7 @@ git pull -ff;
 cp -fr Production/finished/* /home/ec2-user/Live/;
 rm /home/ec2-user/Live/Assets;
 rm /home/ec2-user/Live/static/Assets;
-ln -s Production/Assets /home/ec2-user/Live/static/Assets;
+ln -s /home/ec2-user/Git/Personal-Website-NEW/Production/Assets /home/ec2-user/Live/static/Assets;
 echo "=============================";
 echo "     IN LIVE RIGHT NOW:";
 echo "=============================";
