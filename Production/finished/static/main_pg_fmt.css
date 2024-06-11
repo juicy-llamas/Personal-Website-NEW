@@ -1,0 +1,502 @@
+
+/* main p font */
+@font-face {
+	font-family: Montserrat;
+	src: url( 'Assets/mont.ttf' ) format( 'truetype-variations' ),
+		 url( 'Assets/mont-i.ttf' ) format( 'truetype-variations' );
+	font-weight: 100 900;
+	font-style: normal italic;
+}
+/* subtitles */
+@font-face {
+	font-family: Comfortaa;
+	src: url( 'Assets/comf.ttf' ) format( 'truetype-variations' );
+	font-weight: 300 700;
+}
+/* code blocks / subtitlestitles maybe? */
+@font-face {
+	font-family: 'Ubuntu Mono';
+	src: url( 'Assets/um.ttf' ) 	format( 'truetype' ),
+		 url( 'Assets/um-b.ttf' ) 	format( 'truetype' ),
+		 url( 'Assets/um-i.ttf' ) 	format( 'truetype' ),
+		 url( 'Assets/um-bi.ttf' ) 	format( 'truetype' );
+	font-weight: 400 700;
+	font-style: normal italic;
+}
+/* for title */
+@font-face {
+	font-family: 'M PLUS Code Latin';
+	src: url( 'Assets/mpcl.ttf' ) format( 'truetype-variations' );
+	font-weight: 100 700;
+}
+
+:root {
+	--pg-bm: 1.4rem;
+	--pg-hm: 8vw;
+	--base-fsz: 2vmin;
+	--tit-fsz: 4.4rem;
+	--arr-sz: calc( 10vmin + var( --tit-fsz ) * 1 );
+	--arr-vm: calc( 1vmin + 2px );
+	--arr-hm: calc( 1vmin + 12px );
+	--tit-vm: calc( ( var( --arr-sz ) + 2 * var( --arr-vm ) - 1.34 * var( --tit-fsz ) ) / 2 );
+	--tit-lm: calc( var( --arr-hm ) * 2 + var( --arr-sz ) - var( --pg-hm ) + 1.6rem );
+	--p-m-default: .7rem;
+	--link-hover: #0A6;
+	--link-idle: #466;
+}
+
+/* margin: [top] [right] [bottom] [left]; */
+/* OR margin: [top] [right and left] [bottom]; */
+/* OR margin: [top and bottom] [right and left]; */
+
+#back-arrow {
+	position: absolute;
+	top: var( --arr-vm );
+	left: var( --arr-hm );
+	width: var( --arr-sz );
+	height: var( --arr-sz );
+	opacity: .7;
+/* 	Arrow will start off not displaying since nothing's selected.*/
+	display: none;
+	/* fix bug */
+	z-index: 3;
+}
+
+div, a, p {
+	height: fit-content;
+}
+
+.page {
+	display: none;
+	font-family: 'Montserrat';
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	margin: 0 var( --pg-hm ) var( --pg-bm ) var( --pg-hm );
+	width: calc( 100vw - 2 * var( --pg-hm ) );
+}
+
+.page .title {
+	margin: var( --tit-vm ) 0 var( --tit-vm ) var( --tit-lm );
+	font-family: 'M PLUS Code Latin';
+	font-size: calc( var( --base-fsz )*0.6 + var( --tit-fsz ) - 0.6rem );
+}
+
+@media screen and ( max-width: 480px ) {
+	.page .title {
+		margin: calc( var( --tit-lm ) * 3 / 4 ) 0 2rem;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.page .center {
+	min-height: calc( 100vh - 5.2 * var( --tit-vm ) );
+/* 	margin-bottom: calc( -2 * var( --base-fsz ) ); */
+}
+
+/* headers */
+.page h1, .page h2, .page h3, .page h4, .page h5 {
+	font-family: 'Ubuntu Mono'; } .page h1 {
+	font-size: calc( var( --base-fsz )*0.6 + 3.6rem - 0.6rem );
+	font-family: 'M PLUS Code Latin';
+	font-weight: 100;
+	margin-top: calc( 3.6rem * var( --h-m-factor ) );
+	margin-bottom: calc( 3.6rem * var( --h-m-factor ) ); } .page h2 {
+	font-size: calc( var( --base-fsz )*0.6 + 2.4rem - 0.6rem );
+	font-family: 'Comfortaa';
+	font-weight: 300;
+	margin-top: calc( 2.4rem * var( --h-m-factor ) );
+	margin-bottom: calc( 2.4rem * var( --h-m-factor ) ); } .page h3 {
+	font-size: calc( var( --base-fsz )*0.6 + 1.6rem - 0.6rem );
+	font-family: 'Montserrat';
+	font-weight: 600;
+	margin-top: calc( 1.6rem * var( --h-m-factor ) );
+	margin-bottom: calc( 1.6rem * var( --h-m-factor ) );
+}
+
+.page .float-thing {
+	width: calc( 200px + 10vw );
+	height: calc( var( --base-fsz )*0.6 + 2.4rem );
+	margin-top: calc( 2.4rem * var( --h-m-factor ) );
+	margin-bottom: calc( 2.4rem * var( --h-m-factor ) );
+}
+.page .float-thing .l {
+	float: left;
+	margin:0;
+}
+.page .float-thing .r {
+	float: right;
+	margin:0;
+}
+
+/* paragraphs */
+.page p {
+	font-weight: 300;
+	text-indent: 3rem;
+	font-size: calc( var( --base-fsz )*0.6 + 1.4rem - 0.6rem );
+	line-height: 140%;
+	margin-top: var( --p-m-default );
+	margin-bottom: var( --p-m-default );
+}
+.page .no-indent {
+	text-indent: 0;
+}
+.page .p-big-c {
+	font-weight: 400;
+	font-size: calc( var( --base-fsz )*0.6 + 1.6rem - 0.6rem );
+	text-indent: 0;
+	text-align: center;
+	position: relative;
+	left: 10%;
+	width: 80%;
+	margin-top: calc( var( --p-m-default ) * 3 );
+	margin-bottom: calc( var( --p-m-default ) * 3 );
+}
+.page .p-big-norm {
+	font-weight: 400;
+	font-size: calc( var( --base-fsz )*0.6 + 1.5rem - 0.6rem );
+/* 	text-indent: 0; */
+	text-align: center;
+	position: relative;
+	left: 10%;
+	width: 80%;
+	margin-top: calc( var( --p-m-default ) * 3 );
+	margin-bottom: calc( var( --p-m-default ) * 3 );
+}
+.page a {
+	white-space: nowrap;
+	position: relative;
+	text-indent: 0;
+	margin: 0;
+	color: var( --link-idle );
+	transition: all 0.6s;
+	text-decoration: none;
+}
+.page a:hover {
+	color: var( --link-hover );
+}
+.page a::before, .page a::after {
+	height: 1px;
+	background: var( --link-idle );
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+	top: 102%;
+	left: 0%;
+    content: '';
+	transition: all 0.6s;
+}
+.page a::after {
+	height: 2px;
+	top: calc( 102% + 1px );
+	transform-origin: 50% 50%;
+	transform: scale( 0, 1 );
+}
+.page h3 a::after {	height: 3px; }
+.page h3 a::before { display: none; }
+.page a:hover::before, .page a:hover::after {
+	background: var( --link-hover );
+}
+.page a:hover::after {
+	transform: scale( 1, 1 );
+}
+
+.page .a-icont * {
+	width: 100%;
+	opacity: 0.6;
+}
+.page .a-icont * {
+	background-color: var( --link-idle );
+	transition: background-color 0.6s;
+}
+.page .a-icont:hover * {
+	background-color: var( --link-hover );
+}
+
+/* no stretchy imgs */
+.page .cont-img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+.page .cont-img img {
+	border: 1.2vmin solid #BEE;
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: calc( 2rem + 2vmin );
+}
+
+.page .git-icon::before, .page .git-icon::after {
+	display: none;
+}
+.page .git-icon {
+	margin-left: calc( 0.4rem + 0.1vw );
+	margin-right: calc( 0.4rem + 0.1vw + 32px );
+	position: relative;
+}
+.page h1 .git-icon {
+	margin-left: calc( 1.2rem + 0.3vw );
+	margin-right: calc( 1.2rem + 0.3vw + 32px );
+}
+.page .git-icon.v-m {
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: calc( 0.4rem + 0.1vw );
+	margin-bottom: calc( 0.4rem + 0.1vw );
+}
+.page .git-icon.blk {
+	display: block;
+	height: 38px;
+}
+.page .git-icon svg {
+	position: absolute;
+	left: 0;
+	top: calc( 50% - 16px );
+	width: 32px;
+	height: 32px;
+	fill: var( --link-idle );
+	transition: fill 0.6s, border-color 0.6s;
+/* 	border-radius: 20px; */
+/* 	border: solid; */
+/* 	border-width: 2px; */
+/* 	border-color: var( --link-idle ); */
+}
+.page h1 .git-icon svg {
+	top: calc( 60% - 16px );
+}
+.page .git-icon:hover svg {
+	fill: var( --link-hover );
+/* 	border-color: var( --link-hover ); */
+}
+.page .git-icon path {
+	transform: scale( 0.75, 0.75 ) translate( 5.2px, 5px );
+	transition: transform 0.6s;
+}
+.page .git-icon:hover path {
+	transform: scale( 1, 1 ) translate( 0, 0 );
+}
+
+
+/* dividers */
+.page .lr-divider, .page .tri-divider {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-top: calc( 4 * var( --p-m-default ) );
+	margin-bottom: calc( 2 * var( --p-m-default ) );
+}
+
+/* options for lr divider */
+.page .l-big {
+	width: 60%;
+	margin-right: 8%;
+} .page .l-small {
+	width: 34%;
+	margin-right: 8%;
+} .page .r-big {
+	width: 60%;
+} .page .r-small {
+	width: 34%;
+}
+/* fix for imgs in links */
+/*.page .l-big > img, .page .l-small > img, .page .r-big > img, .page .r-small > img {
+	width: 100%;
+}*/
+
+/* tri divider; you can set the divisions with margins */
+.page .tri-divider > * {
+	width: 33.33%;
+}
+/* quick and easy way to do just that */
+.page .tri-l {
+	margin-right: 3%;
+} .page .tri-c {
+	margin-left: 3%;
+	margin-right: 3%;
+} .page .tri-r {
+	margin-left: 3%;
+}
+/* another quick and easy way */
+.page .tri-elm {
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+/* media queries for horizontal displays */
+@media screen and (max-width: 1660px) {
+	.page .lr-divider, .page .tri-divider {
+		flex-direction: column;
+	}
+	.page .lr-rv {
+		flex-direction: column-reverse;
+	}
+	.page .l-big {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 6vh;
+	} .page .l-small {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 6vh;
+	} .page .r-big {
+		width: 100%;
+	} .page .r-small {
+		width: 100%;
+	}
+	.page .l-big .cont-img, .page .cont-img.l-big, .page .l-small .cont-img, .page .cont-img.l-small, .page .r-big .cont-img, .page .cont-img.r-big, .page .r-small .cont-img, .page .cont-img.r-small {
+		width: 75%;
+	}
+	.page .l-big .cont-img img, .page .cont-img.l-big img, .page .l-small .cont-img img, .page .cont-img.l-small img, .page .r-big .cont-img img, .page .cont-img.r-big img, .page .r-small .cont-img img, .page .cont-img.r-small img {
+		max-height: 512px;
+	}
+
+	/* tri divider; you can set the divisions with margins */
+	.page .tri-divider > * {
+		width: 100%;
+	}
+	/* quick and easy way to do just that */
+	.page .tri-l {
+		margin-right: 0;
+		margin-bottom: 3vh;
+	} .page .tri-c {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+	} .page .tri-r {
+		margin-right: 0;
+		margin-top: 3vh;
+	}
+	/* another quick and easy way */
+	.page .tri-elm {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+	}
+}
+
+.page .emph-border {
+	background-color: #BEE;
+	border-radius: calc( 2 * var( --p-m-default ) );
+	margin-top: calc( 2 * var( --p-m-default ) );
+	margin-bottom: calc( 2 * var( --p-m-default ) );
+	padding: calc( 2.4 * var( --p-m-default ) + 4vmin );
+} .page .emph-border:first-child {
+	margin-top: 0;
+} .page .emph-border:last-child {
+	margin-bottom: 0;
+}
+
+.page .piped-list {
+	max-width: 100%;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
+.page .piped-list .left {
+	padding-right: calc( 0.6rem + 1vw );
+	border-right: 0.2rem solid;
+} .page .piped-list .right {
+	margin-left: calc( 0.6rem + 1vw );
+}
+
+.page .contacts a, .page .contacts h3 {
+	overflow-wrap: break-word;
+	white-space: normal;
+	max-width: calc( 40vw - 4 * var( --p-m-default ) );
+	font-size: calc( var( --base-fsz ) * 1.6 + .6rem );
+}
+
+/* icon dock stuff */
+.page .icon-dock {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	gap: 4%
+} .page .icon-dock .icon {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	object-fit: contain;
+} .page .icon-dock .icon .ic-img {
+	width: 100%;
+	height: 100%;
+} .page .icon-dock .return-bar {
+	width: 0;
+	height: 0;
+	display: none;
+} .page .icon-dock + .icon-views {
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+} .page .icon-dock + .icon-views > * {
+	display: none;
+}
+
+@keyframes icons-click {
+	0% {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	100% {
+		top: 50%;
+		left: 50%;
+		width: 0%;
+		height: 0%;
+	}
+}
+
+@keyframes show-click {
+	0% {
+		height: 0;
+	}
+	100% {
+		height: auto;
+	}
+}
+.page .dock-disp .icon {
+	animation-duration: 1s;
+	animation-name: icons-click;
+	width: 0;
+	height: 0;
+} .page .dock-disp + .icon-views {
+	animation-duration: 1s;
+	animation-delay: 0.2s;
+	animation-name: show-click;
+	height: auto;
+} .page .dock-disp + .icon-views .view-disp {
+	display: block;
+
+}
+
+/* captions and footer */
+.cap-img {
+	display: flex;
+	flex-direction: column;
+}
+.cap-img p {
+	font-style: italic;
+	font-size: calc( var( --base-fsz )*0.6 + 0.8rem - 0.6rem );
+	text-align: center;
+	line-height: 100%;
+	max-width: 80%;
+	margin-left: 10%;
+	text-indent: 0;
+}
+
+.page .footer {
+	margin-top: calc( var( --base-fsz ) );
+	margin-bottom: calc( 2 * var( --base-fsz ) );
+	width: 100%;
+}
+.page .footer p {
+	text-align: center;
+	text-indent: 0;
+}

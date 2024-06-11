@@ -1,0 +1,6 @@
+#!/bin/bash
+cmsg=${1:-minor change on site}
+git add .
+git commit -m "$cmsg"
+git push origin main 
+ssh ec2-user@llamas.us.to -i ~/.ssh/danny.pem 'cd Personal-Website; git pull'
