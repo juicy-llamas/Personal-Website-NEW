@@ -12,6 +12,6 @@ ln -s Production/Assets /home/ec2-user/Live/Assets;
 echo "=============================";
 echo "     IN LIVE RIGHT NOW:";
 echo "=============================";
-ls -lARh /home/ec2-user/Live/;
+find . -O2 ! -name *node_modules*;
 sudo systemctl restart node.service;
 '
