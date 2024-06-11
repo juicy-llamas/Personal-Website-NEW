@@ -21,12 +21,13 @@ const pkey = do_https_action( () => fs.readFileSync( 'cert/private.key', 'utf8' 
 const cert = do_https_action( () => fs.readFileSync( 'cert/certificate.crt', 'utf8' ) );
 
 const express = require( 'express' );
+const compression = require( 'compression' );
 const app = express();
 const port = process.argv[ 2 ] || 80;
 const https_port = process.argv[ 3 ] || 443;
 
 // compression
-app.use( express.compress() );
+app.use( compression() );
 
 app.use( '/', express.static( 'static' ) );
 
