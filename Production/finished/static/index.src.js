@@ -1036,24 +1036,7 @@ const fn = async function () {
 			res_x = image.width * 0.5 * factor;
 			res_y = image.height * 0.5 * factor;
 
-			scale_x = Math.min( 1, 2 * canvas.width / res_x );
-			scale_y = Math.min( 1, 2 * canvas.height / res_y );
-
-// 			console.log( 'scalex: ' + scale_x + ', scaley: ' + scale_y );
-
-			{
-				const l_s = center_x * ( 1 - scale_x ) + extra_scale * scale_x;
-				const b_s = center_y * ( 1 - scale_y ) + extra_scale * scale_y;
-				const r_s = l_s + scale_x - 2 * extra_scale * scale_x;
-				const t_s = b_s + scale_y - 2 * extra_scale * scale_y;
-
-				bk_arr = new Float32Array( [
-					r_s, t_s,
-					r_s, b_s,
-					l_s, t_s,
-					l_s, b_s,
-				] );
-			}
+            this.resize();
 
 			gl.bindBuffer( gl.ARRAY_BUFFER, bk_buf );
 			gl.bufferData( gl.ARRAY_BUFFER, bk_arr, gl.STATIC_DRAW );

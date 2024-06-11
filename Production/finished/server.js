@@ -25,6 +25,9 @@ const app = express();
 const port = process.argv[ 2 ] || 80;
 const https_port = process.argv[ 3 ] || 443;
 
+// compression
+app.use( express.compress() );
+
 app.use( '/', express.static( 'static' ) );
 
 // can remove if not windows
