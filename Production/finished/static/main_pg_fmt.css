@@ -2,31 +2,31 @@
 /* main p font */
 @font-face {
 	font-family: Montserrat;
-	src: url( 'Assets/mont.ttf' ) format( 'truetype-variations' ),
-		 url( 'Assets/mont-i.ttf' ) format( 'truetype-variations' );
+	src: url( 'Assets/mont.woff2' ) format( "woff2-variations" ),
+		 url( 'Assets/mont-i.woff2' ) format( "woff2-variations" );
 	font-weight: 100 900;
 	font-style: normal italic;
 }
 /* subtitles */
 @font-face {
 	font-family: Comfortaa;
-	src: url( 'Assets/comf.ttf' ) format( 'truetype-variations' );
+	src: url( 'Assets/comf.woff2' ) format( "woff2-variations" );
 	font-weight: 300 700;
 }
 /* code blocks / subtitlestitles maybe? */
 @font-face {
 	font-family: 'Ubuntu Mono';
-	src: url( 'Assets/um.ttf' ) 	format( 'truetype' ),
-		 url( 'Assets/um-b.ttf' ) 	format( 'truetype' ),
-		 url( 'Assets/um-i.ttf' ) 	format( 'truetype' ),
-		 url( 'Assets/um-bi.ttf' ) 	format( 'truetype' );
+	src: url( 'Assets/um.woff2' ) 	format( "woff2-variations" ),
+		 url( 'Assets/um-b.woff2' ) 	format( "woff2-variations" ),
+		 url( 'Assets/um-i.woff2' ) 	format( "woff2-variations" ),
+		 url( 'Assets/um-bi.woff2' ) 	format( "woff2-variations" );
 	font-weight: 400 700;
 	font-style: normal italic;
 }
 /* for title */
 @font-face {
 	font-family: 'M PLUS Code Latin';
-	src: url( 'Assets/mpcl.ttf' ) format( 'truetype-variations' );
+	src: url( 'Assets/mpcl.woff2' ) format( "woff2-variations" );
 	font-weight: 100 700;
 }
 
