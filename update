@@ -10,5 +10,5 @@ cp -fr Production/finished/* /home/ec2-user/Live/;
 echo "=============================";
 echo "     IN LIVE RIGHT NOW:";
 echo "=============================";
-ll -r /home/ec2-user/Live/;
+ls -lARh /home/ec2-user/Live/;
 '
