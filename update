@@ -6,4 +6,9 @@ git push origin main
 ssh ec2-user@llamas.us.to -i ~/.ssh/danny.pem '
 cd /home/ec2-user/Git/Personal-Website-NEW; 
 git pull -ff;
-cp -fr Production/finished/* /home/ec2-user/Live/;'
+cp -fr Production/finished/* /home/ec2-user/Live/;
+echo "=============================";
+echo "     IN LIVE RIGHT NOW:";
+echo "=============================";
+ll -r /home/ec2-user/Live/;
+'
