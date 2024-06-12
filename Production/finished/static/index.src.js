@@ -980,7 +980,8 @@ const fn = async function () {
 
 //		~~Not really the center, but a point we will center our calculations for the texture coords around.~~
 //		Yes, the actual center, because contrast..
-		const center_x = .5;//1 - 1275 / 5160;
+//		ok I made it a little off center
+		const center_x = .7;//1 - 1275 / 5160;
 		const center_y = .5;//1 - 1419 / 2871;
 //		Percentage of the shown image to parallax scroll
 		const extra_scale = 0.1;
@@ -1032,7 +1033,7 @@ const fn = async function () {
 				}
 			}
 
-//					Resolution of the image
+//			Resolution of the image
 			res_x = image.width * 0.5 * factor;
 			res_y = image.height * 0.5 * factor;
 
@@ -1107,8 +1108,8 @@ const fn = async function () {
 		};
 
 		this.resize = () => {
-			scale_x = Math.min( 1, 2 * canvas.width / res_x );
-			scale_y = Math.min( 1, 2 * canvas.height / res_y );
+			scale_x = Math.min( 1, canvas.width / res_x );
+			scale_y = Math.min( 1, canvas.height / res_y );
 
 			{
 				const l_s = center_x * ( 1 - scale_x ) + extra_scale * scale_x;

@@ -34,7 +34,7 @@ body {
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
- 	background-color: #FFF;
+ 	background-color: #000;
 }
 
 .disappear-on-focus {
