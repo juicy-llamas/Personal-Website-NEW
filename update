@@ -2,7 +2,7 @@
 cmsg=${1:-minor change on site}
 git add .
 git commit -m "$cmsg"
-git push origin main 
+git push -ff origin main 
 ssh ec2-user@llamas.us.to -i ~/.ssh/danny.pem '
 cd /home/ec2-user/Git/Personal-Website-NEW; 
 git pull -ff;
