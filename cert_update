@@ -36,11 +36,18 @@ read -n1 stuff
 # To install the ssl cert, we need to set up an sshfs--this is simplest
 mkdir -p /tmp/cdir_123
 sshfs 'ec2-user@llamas.us.to:/home/ec2-user' /tmp/cdir_123 -o IdentityFile="$HOME/.ssh/danny.pem"
+
 echo "BEFORE"
 ls "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+# remove existing
 rm -fr "/tmp/cdir_123/Live/cert/*"
 cp "$ssl_cert" "/tmp/cdir_123/Live/cert/$ssl_cert_base"
 unzip "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+
 echo "AFTER"
 ls "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+# unmount 
 fusermount3 -u /tmp/cdir_123
+
+# restart the server
+ssh -y ec2-user@llamas.us.to -i "$HOME/.ssh/danny.pem" 'sudo systemctl restart node.service'
