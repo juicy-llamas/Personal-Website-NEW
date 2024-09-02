@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# CHANGE THIS AS YOU PLEASE
+SSL_CERT_DEFAULT_NAME="~/Downloads/llamas.us.to.zip"
+
+[[ -z $1 ]] && { echo "specify the pki file path"; exit 1; }
+
+pki_file=$1
+pki_file_base=${pki_file##*/}
+ssl_cert=${2:-$SSL_CERT_DEFAULT_NAME}
+ssl_cert_base=${ssl_cert##*.}
+
+# First step is to copy the pki file to it's path
+cp $pki_file "./Production/finished/static/.well-known/pki-validation/$pki_file_base"
+# use the handy update script to commit the changes and update the remote server
+./update "pki validation change"
+
+echo "======================================================================================================="
+echo "The pki validation has been installed--finish the process on the website and press any key to continue."
+echo "======================================================================================================="
+
+read -n1 stuff
+
+while [[ -z $(ls $ssl_cert) ]]; do
+    echo "SSL cert file \'$ssl_cert\' not found, download the file and press a key to continue."
+    echo "Or specify a different path in arg 2 of this script."
+    read -n1 stuff
+done
+
+echo "SSL cert file \'$ssl_cert\' exists, ARE YOU SURE YOU WANT TO INSTALL THIS CERT?"
+echo "You can take some time and read through the file, press any key to continue."
+read -n1 stuff
+
+# To install the ssl cert, we need to set up an sshfs--this is simplest
+mkdir -p /tmp/cdir_123
+sshfs 'ec2-user@llamas.us.to:/home/ec2-user' /tmp/cdir_123 -i ~/.ssh/danny.pem
+echo "BEFORE"
+ls "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+rm -fr "/tmp/cdir_123/Live/cert/*"
+cp "$ssl_cert" "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+unzip "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+echo "AFTER"
+ls "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+fusermount3 -u /tmp/cdir_123
