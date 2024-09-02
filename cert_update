@@ -46,7 +46,7 @@ echo "REMOVING"
 ls "/tmp/cdir_123/Live/cert/"
 echo 'UNZIP'
 cp "$ssl_cert" "/tmp/cdir_123/Live/cert/$ssl_cert_base"
-unzip "/tmp/cdir_123/Live/cert/$ssl_cert_base"
+unzip "/tmp/cdir_123/Live/cert/$ssl_cert_base" -d "/tmp/cdir_123/Live/cert/"
 
 echo "AFTER"
 ls "/tmp/cdir_123/Live/cert/"
