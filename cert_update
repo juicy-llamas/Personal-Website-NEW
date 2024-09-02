@@ -3,7 +3,7 @@
 # CHANGE THIS AS YOU PLEASE
 SSL_CERT_DEFAULT_NAME="~/Downloads/llamas.us.to.zip"
 
-[[ -z $1 ]] && { echo "specify the pki file path"; exit 1; }
+[ -z $1 ] && { echo "specify the pki file path"; exit 1; }
 
 pki_file=$1
 pki_file_base=${pki_file##*/}
@@ -21,13 +21,15 @@ echo "==========================================================================
 
 read -n1 stuff
 
-while [[ -z $(ls $ssl_cert) ]]; do
-    echo "SSL cert file \'$ssl_cert\' not found, download the file and press a key to continue."
+ls $ssl_cert &>> /dev/null
+while [ ! $? -eq 0 ]; do
+    echo "SSL cert file '$ssl_cert' not found, download the file and press a key to continue."
     echo "Or specify a different path in arg 2 of this script."
     read -n1 stuff
+    ls $ssl_cert &>> /dev/null
 done
 
-echo "SSL cert file \'$ssl_cert\' exists, ARE YOU SURE YOU WANT TO INSTALL THIS CERT?"
+echo "SSL cert file '$ssl_cert' exists, ARE YOU SURE YOU WANT TO INSTALL THIS CERT?"
 echo "You can take some time and read through the file, press any key to continue."
 read -n1 stuff
 
