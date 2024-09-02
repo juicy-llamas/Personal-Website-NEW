@@ -8,7 +8,7 @@ SSL_CERT_DEFAULT_NAME="$HOME/Downloads/llamas.us.to.zip"
 pki_file=$1
 pki_file_base=${pki_file##*/}
 ssl_cert=${2:-$SSL_CERT_DEFAULT_NAME}
-ssl_cert_base=${ssl_cert##*.}
+ssl_cert_base=${ssl_cert##*/}
 
 # First step is to copy the pki file to it's path
 cp $pki_file "./Production/finished/static/.well-known/pki-validation/$pki_file_base"
