@@ -42,7 +42,9 @@ ls "/tmp/cdir_123/Live/cert/"
 # remove existing
 rm -fr "/tmp/cdir_123/Live/cert"
 mkdir -p "/tmp/cdir_123/Live/cert"
+echo "REMOVING"
 ls "/tmp/cdir_123/Live/cert/"
+echo 'UNZIP'
 cp "$ssl_cert" "/tmp/cdir_123/Live/cert/$ssl_cert_base"
 unzip "/tmp/cdir_123/Live/cert/$ssl_cert_base"
 
