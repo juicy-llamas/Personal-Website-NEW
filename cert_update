@@ -35,7 +35,7 @@ read -n1 stuff
 
 # To install the ssl cert, we need to set up an sshfs--this is simplest
 mkdir -p /tmp/cdir_123
-sshfs 'ec2-user@llamas.us.to:/home/ec2-user' /tmp/cdir_123 -i "$HOME/.ssh/danny.pem"
+sshfs 'ec2-user@llamas.us.to:/home/ec2-user' /tmp/cdir_123 -o IdentityFile="$HOME/.ssh/danny.pem"
 echo "BEFORE"
 ls "/tmp/cdir_123/Live/cert/$ssl_cert_base"
 rm -fr "/tmp/cdir_123/Live/cert/*"
