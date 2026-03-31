@@ -4,6 +4,6 @@ git add .
 git commit -m "$cmsg"
 git push -ff origin main 
 sshfs ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
-cp -r ./Production/finished/* ~/SSH/
-ssh  -y ubuntu@llamas.to 'sudo cp -r ~/SSH/* /var/www/Personal_Static/'
+cp -vr ./Production/finished/* ~/SSH/
+ssh  -y ubuntu@llamas.to 'sudo cp -vr ~/SSH/* /var/www/Personal_Static/'
 fusermount3 -u ~/SSH
