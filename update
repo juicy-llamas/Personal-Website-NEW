@@ -3,17 +3,8 @@ cmsg=${1:-minor change on site}
 git add .
 git commit -m "$cmsg"
 git push -ff origin main 
-ssh ec2-user@llamas.us.to -i ~/.ssh/danny.pem '
-cd /home/ec2-user/Git/Personal-Website-NEW; 
-git pull -ff;
-cp -fr Production/finished/* /home/ec2-user/Live/;
-rm /home/ec2-user/Live/Assets;
-rm /home/ec2-user/Live/static/Assets;
-ln -s /home/ec2-user/Git/Personal-Website-NEW/Production/Assets /home/ec2-user/Live/static/Assets;
-echo "=============================";
-echo "     IN LIVE RIGHT NOW:";
-echo "=============================";
-find -L /home/ec2-user/Live ! -path *node_modules*;
-echo "=============================";
-sudo systemctl restart node.service;
+sshfs -y ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
+ssh  -y ubuntu@llamas.to '
+cp 
 '
+fusermount3 -u ~/SSH
