@@ -6,7 +6,14 @@ git push -ff origin main
 sshfs ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
 rm -fr ~/SSH/*
 cp -vr ./Production/finished/* ~/SSH/
+rm -fr ~/SSH/Assets
+mkdir ~/SSH/Assets
+cp -vf ./Production/Assets/* ~/SSH/Assets
 ssh  -y ubuntu@llamas.to '
-  sudo rm -fr /var/www/Personal_Static/*;
-  sudo cp -vr ~/SSH/* /var/www/Personal_Static/;'
+  sudo cd /var/www/Personal_Static;
+  sudo rm -fr ./*;
+  sudo cp -vr ~/SSH/* ./;
+  sudo rm ./server.js ./package-lock.json ./package.json;
+  sudo cp ./static/* ./;
+  sudo rmdir ./static; '
 fusermount3 -u ~/SSH
