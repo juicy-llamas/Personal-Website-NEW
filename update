@@ -4,6 +4,7 @@ git add .
 git commit -m "$cmsg"
 git push -ff origin main 
 sshfs ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
+rm -fr ~/SSH/*
 cp -vr ./Production/finished/* ~/SSH/
 ssh  -y ubuntu@llamas.to '
   sudo rm -fr /var/www/Personal_Static/*;
