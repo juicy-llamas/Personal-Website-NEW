@@ -3,7 +3,7 @@ cmsg=${1:-minor change on site}
 git add .
 git commit -m "$cmsg"
 git push -ff origin main 
- shfs -y ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
+sshfs -y ubuntu@llamas.to:/home/ubuntu/SSH ~/SSH
 cp -r ./Production/finished/* ~/SSH/
 ssh  -y ubuntu@llamas.to 'sudo cp -r ~/SSH/* /var/www/Personal_Static/'
 fusermount3 -u ~/SSH
