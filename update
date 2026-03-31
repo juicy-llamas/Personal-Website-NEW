@@ -17,5 +17,5 @@ ssh  -y ubuntu@llamas.to '
   sudo rm ./server.js ./package-lock.json ./package.json;
   sudo rm ./static/Assets;
   sudo mv ./static/* ./;
-  sudo rmdir ./static; '
+  sudo rm -fr ./static; '
 fusermount3 -u ~/SSH
