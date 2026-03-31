@@ -10,7 +10,7 @@ rm -fr ~/SSH/Assets
 mkdir ~/SSH/Assets
 cp -vf ./Production/Assets/* ~/SSH/Assets
 ssh  -y ubuntu@llamas.to '
-  sudo cd /var/www/Personal_Static;
+  cd /var/www/Personal_Static;
   sudo rm -fr ./*;
   sudo cp -vr ~/SSH/* ./;
   sudo rm ./server.js ./package-lock.json ./package.json;
